@@ -1,7 +1,6 @@
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Person implements Serializable{
+public class Person {
     private String personName;
     private String personSurname;
 
