@@ -21,14 +21,14 @@ public class Document {
 
     @JoinColumn(name ="folder_id", nullable = false) //annotation to map the foreign key column of a managed association.
     @JsonIgnore
-    private Folder folder;
+    private Box box;
 
 
     public Document(Integer id, Long barcode, String title) {
         this.id = id;
         this.barcode = barcode;
         this.title = title;
-        this.folder = folder;
+        this.box = box;
     }
 
     public Document() {
@@ -59,12 +59,12 @@ public class Document {
         this.title = title;
     }
 
-    public Folder getFolder() {
-        return folder;
+    public Box getFolder() {
+        return box;
     }
 
-    public void setFolder(Folder folder) {
-        this.folder = folder;
+    public void setFolder(Box box) {
+        this.box = box;
     }
 
     @Override

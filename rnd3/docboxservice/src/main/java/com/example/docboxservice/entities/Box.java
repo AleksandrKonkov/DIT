@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name ="boxes")
-public class Folder {
+public class Box {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -52,7 +52,7 @@ public class Folder {
 
     @Override
     public String toString() {
-        return "Folder{" +
+        return "Box{" +
                 "id=" + id +
                 ", barcode=" + barcode +
                 ", title='" + title + '\'' +
