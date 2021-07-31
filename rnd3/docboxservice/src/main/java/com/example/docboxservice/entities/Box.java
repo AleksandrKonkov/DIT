@@ -14,8 +14,9 @@ public class Box {
     private long box_id;
     @Column(name = "name")
     private String name;
+
     @Column(name = "barcode")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long barcode;
 
     @OneToMany(mappedBy = "box", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)

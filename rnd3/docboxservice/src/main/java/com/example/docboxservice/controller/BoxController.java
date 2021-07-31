@@ -44,7 +44,7 @@ public class BoxController {
         return ResponseEntity.ok(boxService.update(box));
     }
 
-    @DeleteMapping("/deleteBoxByYd/{id}")
+    @DeleteMapping("/deleteBoxById/{id}")
     public void deleteBox(@PathVariable Long id){
         boxService.delete(id);
     }

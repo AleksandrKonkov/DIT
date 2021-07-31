@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoxService {
@@ -40,13 +41,19 @@ public class BoxService {
 
     @Transactional
     public Box update(Box box) {
-        Box box1 = boxRepository.findById(box.getBox_id()).get();
-        if(box1!=null){
-            box1.setName(box.getName());
-            box1.setBarcode(box.getBarcode());
-            return boxRepository.save(box1);
-        }
-        return null;
+        System.out.println(box.getBox_id());
+//        Box box1 = boxRepository.findById(box.getBox_id()).get();
+        // закрепить Optional - почему возвращает null -???
+        Optional<Box> b = boxRepository.findById( box.getBox_id() );
+        Box box1 = null;
+        if (!b.isPresent()) {return new Box();}
+      box1 = b.get();
+            box1.setName( box.getName() );
+            box1.setBarcode( box.getBarcode() );
+            return boxRepository.save( box1 );
+
+
+
     }
 
 }

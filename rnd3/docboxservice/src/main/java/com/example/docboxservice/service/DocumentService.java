@@ -25,20 +25,20 @@ public class DocumentService {
     public List<Document> getAll() {
         return docRepository.findAll();
     }
-
+    @Transactional
     public Document update(Document doc) {
         Document document = docRepository.getById(doc.getId());
         document.setBarcode(doc.getBarcode());
         document.setName(doc.getName());
         return document;
     }
-
+    @Transactional
     public Document getById(Long id) {
-        Document document=docRepository.getById(id);
-        Box box=document.getBox();
-        box.getDocuments().remove(document);
-        boxRepository.save(box);
-        return docRepository.getById(id);
+        Document document=docRepository.findById(id).get();
+//        Box box=document.getBox();
+//        box.getDocuments().remove(document);
+//        boxRepository.save(box);
+        return document;
     }
 
     public void delete(Long id) {
