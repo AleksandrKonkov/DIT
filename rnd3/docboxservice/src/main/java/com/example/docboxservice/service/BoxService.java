@@ -1,24 +1,25 @@
 package com.example.docboxservice.service;
-
+import com.example.docboxservice.entities.Box;
 import com.example.docboxservice.repository.BoxRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.*;
+
+
 import java.util.List;
 
 @Service
 public class BoxService {
 
-        private final BoxRepository boxRepository;
+        private final BoxService boxRepository;
 
         @Autowired
-        public BoxService(BoxRepository boxRepository) {
+        public BoxService(BoxService boxRepository) {
             this.boxRepository = boxRepository;
         }
 
-        public Box create(Box box) {
+        public com.example.docboxservice.entities.Box create(Box box) {
             return boxRepository.save(box);
         }
 

@@ -6,4 +6,5 @@ import javax.swing.*;
 
 
 public interface BoxRepository extends JpaRepository<Box,Long> {
+
 }

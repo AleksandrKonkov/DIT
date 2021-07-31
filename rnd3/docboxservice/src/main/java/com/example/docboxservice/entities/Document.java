@@ -6,7 +6,6 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
-import javax.swing.*;
 
 
 @Entity
@@ -37,11 +36,6 @@ public class Document {
 
     }
 
-    public Document(long id, String name, long barcode) {
-        this.id = id;
-        this.name = name;
-        this.barcode = barcode;
-    }
 
     public long getId() {
         return id;
@@ -67,14 +61,6 @@ public class Document {
         this.barcode = barcode;
     }
 
-    public Box getBox() {
-        return box;
-    }
-
-    public void setBox(Box box) {
-        this.box = box;
-    }
-
     @Override
     public String toString() {
         return "Document{" +
@@ -82,5 +68,13 @@ public class Document {
                 ", name='" + name + '\'' +
                 ", barcode=" + barcode +
                 '}';
+    }
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
     }
 }
