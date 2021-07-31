@@ -3,7 +3,6 @@ package com.example.docboxservice.entities;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name ="boxes")
@@ -22,23 +21,11 @@ public class Box {
     @OneToMany(mappedBy = "box", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Document> documents=new ArrayList<>();
 
-
-
     public Box() {
 
     }
     public Box(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Box{" +
-                "box_id=" + box_id +
-                ", name='" + name + '\'' +
-                ", barcode=" + barcode +
-                ", documents=" + documents +
-                '}';
     }
 
     public long getBox_id() {
@@ -71,5 +58,15 @@ public class Box {
 
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
+    }
+
+    @Override
+    public String toString() {
+        return "Box{" +
+                "box_id=" + box_id +
+                ", name='" + name + '\'' +
+                ", barcode=" + barcode +
+                ", documents=" + documents +
+                '}';
     }
 }

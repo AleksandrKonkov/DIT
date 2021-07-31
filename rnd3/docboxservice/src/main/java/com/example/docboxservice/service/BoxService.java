@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class BoxService {
 
-
     private final BoxRepository boxRepository;
 
     @Autowired
@@ -23,7 +22,6 @@ public class BoxService {
     public Box create(Box box) {
         return boxRepository.save(box);
     }
-
 
     public Box getById(Long id) {
         return boxRepository.getById(id);

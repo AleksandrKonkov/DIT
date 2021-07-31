@@ -23,7 +23,7 @@ public class Document {
     private long barcode;
 
     @ManyToOne
-    @JoinColumn(name="box_id", nullable=false)
+    @JoinColumn(name="box_id", nullable=true)
     @JsonIgnore
     private Box box;
 
@@ -33,9 +33,7 @@ public class Document {
     }
 
     public Document() {
-
     }
-
 
     public long getId() {
         return id;
@@ -60,6 +58,13 @@ public class Document {
     public void setBarcode(long barcode) {
         this.barcode = barcode;
     }
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
 
     @Override
     public String toString() {
@@ -70,11 +75,4 @@ public class Document {
                 '}';
     }
 
-    public Box getBox() {
-        return box;
-    }
-
-    public void setBox(Box box) {
-        this.box = box;
-    }
 }
