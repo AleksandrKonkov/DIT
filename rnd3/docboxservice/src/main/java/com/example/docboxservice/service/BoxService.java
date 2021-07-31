@@ -12,34 +12,35 @@ import java.util.List;
 @Service
 public class BoxService {
 
-        private final BoxService boxRepository;
 
-        @Autowired
-        public BoxService(BoxService boxRepository) {
-            this.boxRepository = boxRepository;
-        }
+    private final BoxRepository boxRepository;
 
-        public com.example.docboxservice.entities.Box create(Box box) {
-            return boxRepository.save(box);
-        }
+    @Autowired
+    public BoxService(BoxRepository boxRepository) {
+        this.boxRepository = boxRepository;
+    }
 
-
-        public Box getById(Long id) {
-            return boxRepository.getById(id);
-        }
-
-        public Box delete(Long id) {
-            Box box = boxRepository.getById(id);
-            boxRepository.delete(box);
-            return box;
-        }
-
-         public List<Box> getAll() {
-              return boxRepository.findAll();
-         }
+    public Box create(Box box) {
+        return boxRepository.save(box);
+    }
 
 
-@Transactional
+    public Box getById(Long id) {
+        return boxRepository.getById(id);
+    }
+
+    public Box delete(Long id) {
+        Box box = boxRepository.getById(id);
+        boxRepository.delete(box);
+        return box;
+    }
+
+    public List<Box> getAll() {
+        return boxRepository.findAll();
+    }
+
+
+    @Transactional
     public Box update(Box box) {
         Box box1 = boxRepository.findById(box.getBox_id()).get();
         if(box1!=null){

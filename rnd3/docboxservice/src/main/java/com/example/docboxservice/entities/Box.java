@@ -27,6 +27,9 @@ public class Box {
     public Box() {
 
     }
+    public Box(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {

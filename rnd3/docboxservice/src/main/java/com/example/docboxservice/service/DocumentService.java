@@ -30,7 +30,6 @@ public class DocumentService {
         return docRepository.findAll();
     }
 
-    @Transactional
     public Document update(Document doc) {
         Document document = docRepository.getById(doc.getId());
         document.setBarcode(doc.getBarcode());
@@ -50,13 +49,13 @@ public class DocumentService {
         docRepository.deleteById(id);
     }
 
-
+    @Transactional
     public Document create(Map<String,String> jsonRequest) {
         //initialize
         long boxId = Long.parseLong(jsonRequest.get("boxId"));
         String docName = jsonRequest.get("name");
 
-        Box box = boxRepository.getById(boxId);
+        Box box=boxRepository.getById(boxId);
         List<Document> list=box.getDocuments();
 
 

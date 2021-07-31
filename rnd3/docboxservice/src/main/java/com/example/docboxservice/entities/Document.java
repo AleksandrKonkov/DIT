@@ -23,7 +23,7 @@ public class Document {
     private long barcode;
 
     @ManyToOne
-    @JoinColumn(name="box_id", nullable=true)
+    @JoinColumn(name="box_id", nullable=false)
     @JsonIgnore
     private Box box;
 
