@@ -1,69 +1,77 @@
 package com.example.docboxservice.entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.*;
+import javax.swing.*;
 
 
+@Entity
+@Table(name = "documents")
 
-@Entity //specifies that the class is an entity and is mapped to a database table
-@Table(name = "documents") //specifies the name of the database table to be used for mapping
 public class Document {
-    @Id //marks a field in a model class as the primary key
-    @ GeneratedValue(strategy = GenerationType.IDENTITY) //автоинкремент
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    @Column(name = "barcode") //для указания соответствия между атрибутом базовой сущности (Entity класса) и столбцом таблицы базы данных.
-    private Long barcode;
-    @Column(name = "title")
-    private String title;
+    @Column(name = "name")
+    private String name;
 
-    @ManyToOne //определяет отношение многие к одному — когда множество объект сущности (Entity класса) ссылается на один объект другой сущности
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long barcode;
 
-    @JoinColumn(name ="folder_id", nullable = false) //annotation to map the foreign key column of a managed association.
+    @ManyToOne
+    @JoinColumn(name="box_id", nullable=true)
     @JsonIgnore
     private Box box;
 
-
-    public Document(Integer id, Long barcode, String title) {
-        this.id = id;
-        this.barcode = barcode;
-        this.title = title;
-        this.box = box;
+    public Document(String name,Box box) {
+        this.name = name;
+        this.box=box;
     }
 
     public Document() {
 
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public Document(long id, String name, long barcode) {
         this.id = id;
-    }
-
-    public Long getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(Long barcode) {
+        this.name = name;
         this.barcode = barcode;
     }
 
-    public String getTitle() {
-        return title;
+    public long getId() {
+        return id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Box getFolder() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(long barcode) {
+        this.barcode = barcode;
+    }
+
+    public Box getBox() {
         return box;
     }
 
-    public void setFolder(Box box) {
+    public void setBox(Box box) {
         this.box = box;
     }
 
@@ -71,8 +79,8 @@ public class Document {
     public String toString() {
         return "Document{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", barcode=" + barcode +
-                ", title='" + title + '\'' +
                 '}';
     }
 }

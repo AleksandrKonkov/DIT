@@ -1,15 +1,17 @@
 package com.example.docboxservice.service;
 
 import com.example.docboxservice.entities.Box;
-import com.example.docboxservice.entities.Document;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.docboxservice.repository.BoxRepository;
+import com.example.docboxservice.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.Document;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 
 @Service
 public class DocumentService {
@@ -27,6 +29,7 @@ public class DocumentService {
         return docRepository.findAll();
     }
 
+    @Transactional
     public Document update(Document doc) {
         Document document = docRepository.getById(doc.getId());
         document.setBarcode(doc.getBarcode());
@@ -46,7 +49,7 @@ public class DocumentService {
         docRepository.deleteById(id);
     }
 
-    @Transactional
+
     public Document create(Map<String,String> jsonRequest) {
         //initialize
         long boxId = Long.parseLong(jsonRequest.get("boxId"));
