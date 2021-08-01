@@ -1,0 +1,63 @@
+http://localhost:8080/swagger-ui/
+###
+
+POST http://localhost:8080/createBox
+Content-Type: application/json
+
+{"name":"boxForDocuments"}
+
+###создание коробки
+
+GET http://localhost:8080/getBoxById/1
+Accept: application/json
+
+### вызов коробки по id
+
+GET http://localhost:8080/getAllBoxes
+Accept: application/json
+
+### вызов списка всех коробок
+
+PUT http://localhost:8080/updateBoxById
+Content-Type: application/json
+
+{"box_id": 1 , "name" : "random"}
+
+### обновить данные коробки по запросу
+
+DELETE http://localhost:8080/deleteBoxById/2
+Accept: application/json
+
+
+### Удалить коробку по Id
+
+POST http://localhost:8080/createDocument
+Content-Type: application/json
+
+{"name":"doc","boxId":"2"}
+
+
+### Запрос на создание документа в коробке.
+
+GET http://localhost:8080/getAllDocuments
+Accept: application/json
+
+
+### вывод списка всех документов
+
+GET http://localhost:8080/getDocumentById/1
+Accept: application/json
+
+### получение документа по ID
+
+PUT http://localhost:8080/updateDocumentById
+Content-Type: application/json
+
+{"id": 1 , "name" : "random"}
+
+### обновить данные документа по запросу
+
+DELETE http://localhost:8080/deleteDocumentById/1
+Accept: application/json
+
+### удалить документ по id

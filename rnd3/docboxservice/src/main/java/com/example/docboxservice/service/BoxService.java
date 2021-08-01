@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +29,7 @@ public class BoxService {
     public Box delete(Long id) {
         Box box = boxRepository.getById(id);
         boxRepository.delete(box);
+
         return box;
     }
 
@@ -41,7 +40,6 @@ public class BoxService {
 
     @Transactional
     public Box update(Box box) {
-        System.out.println(box.getBox_id());
 //        Box box1 = boxRepository.findById(box.getBox_id()).get();
         // закрепить Optional - почему возвращает null -???
         Optional<Box> b = boxRepository.findById( box.getBox_id() );

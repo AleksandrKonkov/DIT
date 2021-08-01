@@ -18,6 +18,7 @@ public class Document {
 
     @Column(name = "name")
     private String name;
+
     @Column(name = "barcode")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long barcode;

@@ -35,9 +35,6 @@ public class DocumentService {
     @Transactional
     public Document getById(Long id) {
         Document document=docRepository.findById(id).get();
-//        Box box=document.getBox();
-//        box.getDocuments().remove(document);
-//        boxRepository.save(box);
         return document;
     }
 
